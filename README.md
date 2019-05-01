@@ -12,3 +12,10 @@ A user should be able to display that same list of favourite cards.
 
 <strong>Future Features</strong>
 
+
+<strong>Learning Outcomes</strong>
+
+React - a greater familarity
+Redux - basic use as a global state store
+Thunk - How and when to use - basic
+APIs - a greater familarity
