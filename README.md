@@ -1,41 +1,14 @@
-# A starter project for React/Redux
+# Search Magic Project
 
-> A minimalistic React/Redux starter project
+> A minimalistic React/Redux project for searching through Magic the gathering cards and then storing selected cards in a database.
 
-To use:
+<strong>MVP</strong>
 
-* Fork this repo
-* Rename your repo according to the app you're building
+A user should be able to search through for a card via a text box for a specific card using that cards name.
 
-```sh
-git clone https://github.com/[your-org]/[your-app].git
-cd [your-app] && npm
-```
+A user should be able to save that card into a favourites database.
 
-This is the structure of this boilerplate:
+A user should be able to display that same list of favourite cards.
 
-```sh
-.
-├── client
-│   ├── actions
-│   │   └── index.js
-│   ├── components
-│   │   ├── AddWord.jsx
-│   │   ├── App.jsx
-│   │   ├── Word.jsx
-│   │   └── Words.jsx
-│   ├── reducers
-│   │   ├── index.js
-│   │   └── words.js
-│   └── index.js
-├── public
-│   ├── index.html
-│   └── main.css
-├── server
-│   ├── index.js
-│   └── server.js
-├── .gitignore
-├── package.json
-├── README.md
-└── webpack.config.js
-```
+<strong>Future Features</strong>
+
