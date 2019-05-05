@@ -1,6 +1,7 @@
 import React from 'react'
 
 import {connect} from 'react-redux'
+import { getMagicCards } from '../actions';
 
 class SearchBox extends React.Component {
     constructor(props){
@@ -9,6 +10,7 @@ class SearchBox extends React.Component {
             searchValue: ''
         }
         this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     handleChange = (event) => {
@@ -17,13 +19,38 @@ class SearchBox extends React.Component {
         })  
     }
 
+    handleSubmit = (event) => {
+        event.preventDefault()
+        this.props.getCards(this.state.searchValue)
+        console.log('Submit Not Finished')
+    }
+
     render() {
         return (
             <div>
-                <input type="text" name="search" placeholder="Search Card Here..." onChange={this.handleChange} />
+                <form onSubmit={this.handleSubmit}>
+                    <input 
+                        type="text" 
+                        name="search" 
+                        placeholder="Search Card Here..." 
+                        onChange={this.handleChange} 
+                    />
+                </form>
             </div>
         )
     }
 }
 
-export default connect()(SearchBox)
+// mapStateToProps = (state) => {
+//     return null
+// }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getCards: (searchValue) => {
+            dispatch(getMagicCards(searchValue))
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(SearchBox)

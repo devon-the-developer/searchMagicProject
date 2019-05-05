@@ -1,9 +1,13 @@
-// let nextWordId = 0
+import request from 'superagent'
 
-// export const addWord = (word) => {
-//   return {
-//     type: 'ADD_WORD',
-//     id: nextWordId++,
-//     word
-//   }
-// }
+export function getMagicCards(searchTerm) {
+    console.log('getMagicCards firing')
+    return request
+        .get('/magiccards/' + searchTerm)
+        .then(res => {
+         console.log(res.body)
+        })
+        .catch(err => {
+            console.log(err.message, err.response)
+        });
+}
