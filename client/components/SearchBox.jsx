@@ -1,7 +1,8 @@
 import React from 'react'
 
 import {connect} from 'react-redux'
-import { getMagicCards } from '../actions';
+import { getMagicCards } from '../actions'
+import { filterCards, saveCards } from '../actions'
 
 class SearchBox extends React.Component {
     constructor(props){
@@ -17,12 +18,21 @@ class SearchBox extends React.Component {
         this.setState({
             searchValue: event.target.value
         })  
+
+        if (event.target.value.length < this.state.searchValue.length) {
+            this.props.dispatch(saveCards(this.props.cardList))
+        }
+
+        if (event.target.value.length > 2) {
+            this.props.dispatch(filterCards(event.target.value))
+            console.log(event.target.value)
+        }
     }
 
     handleSubmit = (event) => {
         event.preventDefault()
-        this.props.getCards(this.state.searchValue)
         console.log('Submit Not Finished')
+        console.log(this.props.filteredCards)
     }
 
     render() {
@@ -33,6 +43,7 @@ class SearchBox extends React.Component {
                         type="text" 
                         name="search" 
                         placeholder="Search Card Here..." 
+                        autoComplete="off"
                         onChange={this.handleChange} 
                     />
                 </form>
@@ -41,16 +52,11 @@ class SearchBox extends React.Component {
     }
 }
 
-// mapStateToProps = (state) => {
-//     return null
-// }
-
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
     return {
-        getCards: (searchValue) => {
-            dispatch(getMagicCards(searchValue))
-        }
+        cardList: state.cards,
+        filteredCards: state.filteredCards
     }
 }
 
-export default connect(null, mapDispatchToProps)(SearchBox)
+export default connect(mapStateToProps)(SearchBox)

@@ -3,11 +3,12 @@ import { connect } from 'react-redux'
 
 import SearchBox from './SearchBox'
 import { fetchMagicCards } from '../actions';
+import DisplayList from './DisplayList';
 
 class App extends React.Component {
 
   componentDidMount() {
-    console.log(this.props.cardList)
+    // console.log(this.props.cardList)
     this.props.dispatch(fetchMagicCards())
   }
 
@@ -15,7 +16,7 @@ class App extends React.Component {
     return (
       <div className='app-container'>
         <SearchBox />
-        
+        <DisplayList />
       </div>
     )
   }
